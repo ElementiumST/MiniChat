@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MiniChat</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Чаты</string>
+    <string name="title_dashboard">Профиль</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="changePassword">Изменить пароль</string>
+    <string name="changeImage">изменить аватар профиля</string>
+    <string name="friends">друзья</string>
+    <string name="addChat">добавить чат</string>
+    <string name="notHasFriends">У вас нет друзей</string>
+    <string name="accept">Принять</string>
+    <string name="reject">Отклонить</string>
+    <string name="chat">Создать чат</string>
+    <string name="delete">Удалить</string>
+    <string name="signOut">Выйти</string>
+</resources>

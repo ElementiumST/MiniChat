@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="ProfileButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+    <style name="Accept" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:text">@string/accept</item>
+    </style>
+    <style name="Reject" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:text">@string/reject</item>
+    </style>
+    <style name="Delete" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:text">@string/delete</item>
+    </style>
+    <style name="Chat" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:text">@string/chat</item>
+    </style>
+</resources>
