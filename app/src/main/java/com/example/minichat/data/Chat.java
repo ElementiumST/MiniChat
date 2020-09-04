@@ -1,6 +1,7 @@
 package com.example.minichat.data;
 
 import android.graphics.Bitmap;
+import android.widget.ImageView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
@@ -26,8 +27,6 @@ public class Chat implements Serializable {
 
     public Chat() {
     }
-
-
 
     public Chat(String key, String chatName, List<String> members) {
         this.members = members;

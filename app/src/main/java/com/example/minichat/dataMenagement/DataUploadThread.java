@@ -32,6 +32,10 @@ public class DataUploadThread extends Thread {
         List<Chat> collection = new ArrayList<>(chatMap.values());
         viewModel.setChatsObservable(collection);
     }
+    private void setUser(User user) {
+        this.currentUser = user;
+        viewModel.getUserObservable().postValue(user);
+    }
 
     @Override
     public void run() {
@@ -57,6 +61,17 @@ public class DataUploadThread extends Thread {
                                 }
                             });
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        currentUser.getReference().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                setUser(snapshot.getValue(User.class));
             }
 
             @Override

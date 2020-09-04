@@ -63,13 +63,16 @@ public class MainActivity extends AppCompatActivity {
                 //Обрабатываем возвращенные данные из Friend Activity 
                 assert data != null;
                 Friend friend = (Friend) data.getSerializableExtra("friend");
-                navController.navigate(R.id.navigation_home);
                 assert friend != null;
+                if(friend.getUsername().equals(user.getUsername())){
+                    Toast.makeText(MainActivity.this, "Нельзя отправить запрос самому себе", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                navController.navigate(R.id.navigation_home);
                 database.getReference("chats").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String key = user.getUsername()+"_"+friend.getUsername();
-                        assert key != null;
                         if(!snapshot.hasChild(key) && !snapshot.hasChild(friend.getUsername()+"_"+user.getUsername())){
                             Chat chat = new Chat(key, friend.getUsername() + " и " + user.getUsername(),
                                 Arrays.asList(friend.getUsername(), user.getUsername()));

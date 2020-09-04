@@ -1,10 +1,13 @@
 package com.example.minichat.ui.home;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,10 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.minichat.Chat.ChatActivity;
 import com.example.minichat.MainActivity;
 import com.example.minichat.R;
+import com.example.minichat.Utils;
 import com.example.minichat.data.Chat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
     MainActivity activity;
@@ -55,9 +60,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     static class ChatViewHolder extends RecyclerView.ViewHolder {
         TextView title, lastMessage;
         Chat chat;
+        ImageView userImage;
+        MainActivity activity;
         ChatViewHolder(@NonNull View itemView, MainActivity activity) {
             super(itemView);
+            this.activity = activity;
             title = itemView.findViewById(R.id.username);
+            userImage = itemView.findViewById(R.id.userImage);
             lastMessage = itemView.findViewById(R.id.lastMessage);
             itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(activity, ChatActivity.class);
@@ -75,6 +84,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             else
                 lastMessage.setText(chat.getLastMessage().getOwner() + ": " +chat.getLastMessage().getText());
             title.setText(chat.getChatName());
+            String username = Objects.requireNonNull(activity.getModel().getUserObservable().getValue()).getUsername();
+            for (String name:
+                 chat.getMembers()) {
+                if(!name.equals(username)) {
+                    Utils.tryLoadImage(name, userImage);
+                    break;
+                }
+            }
+
         }
     }
 }

@@ -35,6 +35,13 @@
             android:textSize="24sp" />
 
         <Button
+            android:id="@+id/changeImage"
+            style="@style/ProfileButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/changeImage" />
+
+        <Button
             android:id="@+id/friends"
             style="@style/ProfileButton"
             android:layout_width="match_parent"

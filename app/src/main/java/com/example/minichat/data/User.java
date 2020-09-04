@@ -12,7 +12,8 @@ import java.util.Objects;
 
 public class User implements Serializable {
     public static final String USER_REFERENCE_PATH = "users";
-    private String username, password, imagePath;
+    private String username, password;
+    private boolean hasImage;
     private Bitmap image;
     private String[] chatIDs;
     private Friend[] friends;
@@ -33,9 +34,11 @@ public class User implements Serializable {
         return password;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public boolean isHasImage() {
+        return hasImage;
     }
+
+
     @Exclude
     public Bitmap getImage() {
         return image;

@@ -1,9 +1,11 @@
 package com.example.minichat.Chat;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.minichat.MainActivity;
 import com.example.minichat.R;
+import com.example.minichat.Utils;
 import com.example.minichat.data.Chat;
 import com.example.minichat.data.Message;
 import com.google.firebase.database.DataSnapshot;
@@ -54,8 +57,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     }
     static class MessageViewHolder extends RecyclerView.ViewHolder {
         TextView owner, text;
+        ImageView userImage;
         MessageViewHolder(@NonNull View itemView) {
             super(itemView);
+            userImage = itemView.findViewById(R.id.userImage);
             owner = itemView.findViewById(R.id.username);
             text = itemView.findViewById(R.id.text);
 
@@ -63,6 +68,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         void bind(Message message) {
             owner.setText(message.getOwner());
             text.setText(message.getText());
+            Utils.tryLoadImage(message.getOwner(), userImage);
         }
     }
 }

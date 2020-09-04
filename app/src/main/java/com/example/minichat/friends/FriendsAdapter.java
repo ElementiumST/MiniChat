@@ -54,11 +54,13 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendVi
         FriendsActivity activity;
         TextView name, status;
         FriendButtonContainer container;
+        ImageView userImage;
         Friend friend;
         FriendViewHolder(@NonNull View itemView, FriendsActivity activity) {
             super(itemView);
             this.activity = activity;
             name = itemView.findViewById(R.id.name);
+            userImage = itemView.findViewById(R.id.userImage);
             status = itemView.findViewById(R.id.status);
             container = itemView.findViewById(R.id.container);
             container.setClickListeners(new FriendButtonContainer.OnContainerItemClickListener() {
@@ -90,6 +92,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendVi
             container.removeAllViews();
             container.addButtons(friend.getStatus());
             status.setText(friend.getStatusString());
+            Utils.tryLoadImage(friend.getUsername(), userImage);
 
         }
     }
