@@ -35,6 +35,7 @@ public class Utils {
     private static Map<String, Bitmap> cash = new HashMap<>();
     public static final int ONE_MBYTE = 1024*1024;
     private static FirebaseStorage storage = FirebaseStorage.getInstance();
+    // Метод, который пытается подгрузить изображение и "засунуть" его в ImageView
     @SuppressLint("ResourceType")
     public static void tryLoadImage(String username, ImageView view) {
         if(cash.containsKey(username))

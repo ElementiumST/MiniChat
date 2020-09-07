@@ -88,6 +88,7 @@ public class SplashActivity extends AppCompatActivity {
         if(resultCode == RESULT_OK)
             switch (requestCode){
                 case AUTH_CODE:
+                    // Если аунтентификация завершена успешно, получаем от неё обьект пользователя и помещаем его id в кеш
                     if (data == null) return;
                     User user = (User) data.getSerializableExtra("user");
                     if(user == null) return;
@@ -100,6 +101,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
     }
+    // Запускает активити Авторизации
     private void startAuth() {
         Intent intent = new Intent(this, AuthActivity.class);
         startActivityForResult(intent, AUTH_CODE);

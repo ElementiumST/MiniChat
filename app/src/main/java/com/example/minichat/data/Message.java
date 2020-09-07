@@ -30,6 +30,7 @@ public class Message implements Serializable {
     public String getText() {
         return text;
     }
+
     public DatabaseReference getReference(Chat chat) {
         return chat.getReference().child(MESSAGE_REFERENCE_PATH).push();
     }

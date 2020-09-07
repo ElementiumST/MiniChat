@@ -8,6 +8,7 @@ import com.example.minichat.data.User;
 
 import java.util.List;
 
+// View model для Main activity
 public class MainViewModel extends ViewModel {
     private MutableLiveData<User> userObservable = new MutableLiveData<>();
     private MutableLiveData<List<Chat>> chatsObservable = new MutableLiveData<>();
@@ -26,6 +27,7 @@ public class MainViewModel extends ViewModel {
 
     public void createConnectionsAndListenersForDatabase(User user) {
         userObservable.setValue(user);
+        // запускает поток подгрузки данных
         DataUploadThread thread = new DataUploadThread(user, this);
         thread.start();
     }

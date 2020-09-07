@@ -26,12 +26,13 @@ public class DataUploadThread extends Thread {
         this.currentUser = currentUser;
         this.viewModel = viewModel;
     }
-
+    // Добавляет чат в список в моделе
     private void addChat(String key, Chat chat) {
         chatMap.put(key, chat);
         List<Chat> collection = new ArrayList<>(chatMap.values());
         viewModel.setChatsObservable(collection);
     }
+    // Изменяет обьект пользователя в моделе
     private void setUser(User user) {
         this.currentUser = user;
         viewModel.getUserObservable().postValue(user);
@@ -39,6 +40,7 @@ public class DataUploadThread extends Thread {
 
     @Override
     public void run() {
+        // Подгружает чаты
         currentUser.getReference().child(Chat.CHAT_REFERENCE_PATH).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -68,6 +70,7 @@ public class DataUploadThread extends Thread {
 
             }
         });
+        // Подгружает изменения пользователя
         currentUser.getReference().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -44,6 +44,7 @@ public class ChatActivity extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("user");
         //Устанавливаем пораметры Recycler view
         LinearLayoutManager manager = new LinearLayoutManager(this);
+        // Нужно для того, что бы "Гравитация была к нижней части view"
         manager.setReverseLayout(true);
         list.setLayoutManager(manager);
         list.setHasFixedSize(true);

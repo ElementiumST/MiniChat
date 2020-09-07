@@ -46,6 +46,7 @@ public class Chat implements Serializable {
         return key;
     }
 
+
     @Exclude
     public DatabaseReference getReference(){
         return FirebaseDatabase.getInstance().getReference(CHAT_REFERENCE_PATH).child(key);

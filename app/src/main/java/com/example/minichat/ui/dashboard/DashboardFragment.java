@@ -59,17 +59,20 @@ public class DashboardFragment extends Fragment {
 
         });
         friends.setOnClickListener(view -> {
+            // при нажатии на кнопку "Друзья" открываем соответствующую активити
             Intent intent = new Intent(requireActivity(), FriendsActivity.class);
             intent.putExtra("user", activity.getModel().getUserObservable().getValue());
             requireActivity().startActivityForResult(intent, MainActivity.FRIENDS_CODE);
         });
         signOut.setOnClickListener(view -> {
+            // Обработчик нажатия выхода из учетной записи
             Intent intent = new Intent(requireActivity(), SplashActivity.class);
             intent.putExtra("signOut", true);
             requireActivity().finish();
             startActivity(intent);
         });
         changeImage.setOnClickListener(view -> {
+            // Обрабатывает нажатие по кнопки изменения аватара и открывает специальную активити
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -91,6 +94,7 @@ public class DashboardFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            // Если пользователь выбрал изображение идет попытка загрузить его в бд и в случае успеха это изображение становится аватаром пользователя
             Uri imageUri = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), imageUri);
